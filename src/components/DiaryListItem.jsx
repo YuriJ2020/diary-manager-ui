@@ -1,13 +1,32 @@
-import { useDispatch, useSelector } from "react-redux";
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import Container from "react-bootstrap/Container";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ButtonGroup, Container, Button } from "react-bootstrap";
 
 import { selectReadDiariesResponse } from "../store/asyncSlice";
 import { setActiveKey } from "../store/tabSlice";
 import { setDeleteDiary } from "../sagas/sagaActions";
 import { setDiary } from "../store/diarySlice";
+
+import styled from "styled-components";
+
+import NotePNG from "../assets/note.png";
+
+const DivS = styled.div`
+  // background: url(${NotePNG});
+  // min-height: 90vh;
+  // width: 100%;
+  // height: auto;
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  width: 88%;
+  margin: 0 auto;
+  min-height: 60vh;
+  background-color: rgb(227, 235, 238);
+  border-radius: 2rem;
+  white-space: pre-line;
+  line-height: 2rem;
+`;
 
 const DiaryListItem = ({ index, message }) => {
   const dispatch = useDispatch();
@@ -29,9 +48,9 @@ const DiaryListItem = ({ index, message }) => {
           Delete
         </Button>
         <Button
-          variant="primary"
+          variant="info"
           size="sm"
-          className="mx-1"
+          className="mx-1 text-white"
           style={{ minWidth: "15%", maxWidth: "18%" }}
           onClick={() => {
             dispatch(setDiary(diary));
@@ -41,7 +60,9 @@ const DiaryListItem = ({ index, message }) => {
           Edit
         </Button>
       </ButtonGroup>
-      <div style={{ whiteSpace: "pre" }}>{message}</div>
+      <DivS className="my-5">
+        <div style={{ padding: "2rem" }}>{message}</div>
+      </DivS>
     </Container>
   );
 };

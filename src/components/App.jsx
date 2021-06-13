@@ -1,9 +1,7 @@
 import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
-import Container from "react-bootstrap/Container";
 import React from "react";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
+import { Container, Tab, Tabs } from "react-bootstrap";
 
 import { selectJWT } from "../store/userSlice";
 import { selectActiveKey, setActiveKey } from "../store/tabSlice";

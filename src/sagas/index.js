@@ -5,6 +5,7 @@ import { readDiariesSaga } from "./readDiariesSaga";
 import { signUpSaga } from "./signUpSaga";
 import { updateDiarySaga } from "./updateDiarySaga";
 
+// iniciate sagas それぞれの小sagamiddlewareに登録する
 const initiateSagas = (sagaMiddleware) => {
   sagaMiddleware.run(createDiarySaga);
   sagaMiddleware.run(deleteDiarySaga);
@@ -15,3 +16,6 @@ const initiateSagas = (sagaMiddleware) => {
 };
 
 export default initiateSagas;
+
+// 1.redux store にsagaのmiddlewareを登録
+// 2. それぞれの小sagaをsagaのmiddlewareに登録する

@@ -1,8 +1,8 @@
 const backend = {
   endpoints: {
-    signup: 'http://localhost:8888/api/signup',
-    login: 'http://localhost:8888/api/login',
-    diary: 'http://localhost:8888/api/diary',
+    signup: "http://localhost:9999/api/signup",
+    login: "http://localhost:9999/api/login",
+    diary: "http://localhost:9999/api/diary",
   },
 };
 

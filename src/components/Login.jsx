@@ -1,16 +1,32 @@
 import _ from "lodash";
-import { useDispatch, useSelector } from "react-redux";
-import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import Container from "react-bootstrap/Container";
-import FormControl from "react-bootstrap/FormControl";
-import InputGroup from "react-bootstrap/InputGroup";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  Alert,
+  Image,
+  Button,
+  ButtonGroup,
+  Container,
+  FormControl,
+  InputGroup,
+} from "react-bootstrap";
 
 import { selectLoginResponse } from "../store/asyncSlice";
 import { selectNickname } from "../store/userSlice";
 import { setLogin } from "../sagas/sagaActions";
+
+import styled from "styled-components";
+import { BsEnvelope, BsLock } from "react-icons/bs";
+
+import UserSVG from "../assets/user.svg";
+
+const ContainerS = styled(Container)`
+  border-radius: 2rem;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  background-color: #d9afd9;
+  background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
+  text-align: center;
+`;
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,11 +37,14 @@ const Login = () => {
   const { hasError, message } = useSelector(selectLoginResponse);
 
   return (
-    <Container fluid className="p-5" style={{ backgroundColor: "azure" }}>
-      <InputGroup className="mb-3">
-        <InputGroup.Prepend>
-          <InputGroup.Text>Email</InputGroup.Text>
-        </InputGroup.Prepend>
+    <ContainerS fluid className="p-5">
+      <Image src={UserSVG} style={{ width: "6rem" }} />
+      <p className="py-4">Please enter your Login details.</p>
+      <InputGroup className="mb-3 mx-auto w-75">
+        <InputGroup.Text>
+          <BsEnvelope />
+        </InputGroup.Text>
+
         <FormControl
           placeholder="Email"
           type="email"
@@ -33,11 +52,11 @@ const Login = () => {
           onChange={(e) => setEmail(e.currentTarget.value)}
         />
       </InputGroup>
+      <InputGroup className="mb-3 mx-auto w-75">
+        <InputGroup.Text>
+          <BsLock />
+        </InputGroup.Text>
 
-      <InputGroup className="mb-3">
-        <InputGroup.Prepend>
-          <InputGroup.Text>Password</InputGroup.Text>
-        </InputGroup.Prepend>
         <FormControl
           placeholder="Password"
           type="password"
@@ -45,8 +64,7 @@ const Login = () => {
           onChange={(e) => setPassword(e.currentTarget.value)}
         />
       </InputGroup>
-
-      <ButtonGroup className="d-flex justify-content-center mt-4">
+      <ButtonGroup className="d-flex justify-content-center mt-4 ">
         <Button
           variant="secondary"
           className="mx-1"
@@ -59,23 +77,22 @@ const Login = () => {
           Reset
         </Button>
         <Button
-          variant="primary"
-          className="mx-1"
+          variant="info"
+          className="mx-1 text-white"
           style={{ minWidth: "21%", maxWidth: "24%" }}
           onClick={() => dispatch(setLogin({ email, password }))}
         >
           Login
         </Button>
       </ButtonGroup>
-
       <Alert
-        className="mt-3"
-        variant={hasError ? "danger" : "success"}
+        className="mt-3  mx-auto w-75"
+        variant={hasError ? "danger" : "info"}
         hidden={_.isNil(hasError)}
       >
         {hasError ? message : `${nickname}, welcome back!`}
       </Alert>
-    </Container>
+    </ContainerS>
   );
 };
 

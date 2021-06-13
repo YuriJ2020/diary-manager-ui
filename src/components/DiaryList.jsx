@@ -1,17 +1,24 @@
 import _ from "lodash";
-import { useDispatch, useSelector } from "react-redux";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import moment from "moment";
-import Nav from "react-bootstrap/Nav";
 import React from "react";
-import Row from "react-bootstrap/Row";
-import Tab from "react-bootstrap/Tab";
+
+import { useDispatch, useSelector } from "react-redux";
+import { Container, Nav, Row, Tab, Col } from "react-bootstrap";
+import moment from "moment";
 
 import { selectActiveKey, setActiveKey } from "../store/diariesSlice";
 import { selectReadDiariesResponse } from "../store/asyncSlice";
 import DiaryListItem from "./DiaryListItem";
 import frontend from "../settings/frontend";
+
+import styled from "styled-components";
+
+const ContainerS = styled(Container)`
+  border-radius: 2rem;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  background-color: #d9afd9;
+  background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
+  text-align: center;
+`;
 
 const DiaryList = () => {
   const dispatch = useDispatch();
@@ -19,15 +26,22 @@ const DiaryList = () => {
   const { apiData, hasError } = useSelector(selectReadDiariesResponse);
   const diaries = hasError ? [] : _.get(apiData, "diaries", []);
   return (
-    <Container fluid className="p-3" style={{ backgroundColor: "azure" }}>
+    <ContainerS
+      fluid
+      className="p-3"
+      style={{
+        backgroundColor: " #D9AFD9",
+        backgroundImage: "linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%)",
+      }}
+    >
       <Tab.Container
         defaultActiveKey={0}
         activeKey={activeKey}
         onSelect={(key) => dispatch(setActiveKey(key))}
       >
         <Row>
-          <Col sm={3} className="mb-3">
-            <Nav variant="pills" className="flex-column">
+          <Col sm={3} style={{ paddingTop: "5rem" }}>
+            <Nav variant="" className="flex-column">
               {_.map(diaries, (diary, idx) => (
                 <Nav.Item key={idx}>
                   <Nav.Link eventKey={idx}>
@@ -48,7 +62,7 @@ const DiaryList = () => {
           </Col>
         </Row>
       </Tab.Container>
-    </Container>
+    </ContainerS>
   );
 };
 
