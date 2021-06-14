@@ -35,8 +35,6 @@ function handleResponse({ body, status }) {
   }
 }
 
-// function* is a generator
-// yield used in generator function
 export function* handleLogin({ payload }) {
   const body = JSON.stringify(payload);
   const options = {
@@ -45,9 +43,7 @@ export function* handleLogin({ payload }) {
     headers: { "Content-Type": "application/json" },
   };
   const response = yield call(fetch, backend.endpoints.login, options);
-  // const response_2 = fetch(backend.endpoints.login, options);
   const resBody = yield apply(response, response.json);
-  // const resBody_2 = respones.json();
 
   const { headers, status } = response;
   const { user } = resBody;

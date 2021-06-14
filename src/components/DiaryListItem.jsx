@@ -28,6 +28,11 @@ const DivS = styled.div`
   line-height: 2rem;
 `;
 
+/**
+ *
+ * @param {object} a prop oject that consists of index and message.
+ * @returns DiaryListItem component.
+ */
 const DiaryListItem = ({ index, message }) => {
   const dispatch = useDispatch();
   const {

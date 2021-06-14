@@ -20,6 +20,10 @@ const ContainerS = styled(Container)`
   text-align: center;
 `;
 
+/**
+ * DiaryList Component.
+ * @returns DiaryList React Component.
+ */
 const DiaryList = () => {
   const dispatch = useDispatch();
   const activeKey = useSelector(selectActiveKey);

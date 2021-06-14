@@ -18,9 +18,7 @@ import { setSignUp } from "../sagas/sagaActions";
 import { BsEnvelope, BsLock, BsPerson } from "react-icons/bs";
 import styled from "styled-components";
 
-import diarySVG from "../assets/diary.svg";
-import diary2SVG from "../assets/diary2.svg";
-import diary3SVG from "../assets/diary3.svg";
+import diarySVG from "../assets/diary2.svg";
 
 const ContainerS = styled(Container)`
   text-align: center;
@@ -28,6 +26,12 @@ const ContainerS = styled(Container)`
   box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
   background-color: #d9afd9;
   background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
+`;
+
+const InputGroupS = styled(InputGroup)`
+  @media (min-width: 992px) {
+    width: 60%;
+  }
 `;
 
 const SignUp = () => {
@@ -41,18 +45,17 @@ const SignUp = () => {
   return (
     <ContainerS fluid className="p-5">
       <div className="text-center">
-        <h1 className="mt-3 text-white font-weight-bold">Simple Diary</h1>
+        <h1 className="h2-responsive pt-3 text-white font-weight-bold">
+          Simple Diary
+        </h1>
 
-        <p
-          className="my-3 text-white"
-          style={{ color: "#5b5b5b", fontSize: "1.3rem" }}
-        >
+        <p className="my-3 text-white" style={{ fontSize: "1.2rem" }}>
           This app for the ones who love writing Diary.
         </p>
-        <Image src={diary2SVG} style={{ width: "5.4rem" }} className="my-4" />
+        <Image src={diarySVG} style={{ width: "5.4rem" }} className="py-4" />
 
         <p className="mb-2">Please sign up before you start.</p>
-        <InputGroup className="py-2 mx-auto w-75">
+        <InputGroupS className="py-2 mx-auto">
           <InputGroup.Text>
             <BsEnvelope />
           </InputGroup.Text>
@@ -62,9 +65,9 @@ const SignUp = () => {
             value={email}
             onChange={(e) => setEmail(e.currentTarget.value)}
           />
-        </InputGroup>
+        </InputGroupS>
 
-        <InputGroup className="py-2 mx-auto w-75">
+        <InputGroupS className="py-2 mx-auto">
           <InputGroup.Text>
             <BsPerson />
           </InputGroup.Text>
@@ -73,9 +76,9 @@ const SignUp = () => {
             value={nickname}
             onChange={(e) => setNickname(e.currentTarget.value)}
           />
-        </InputGroup>
+        </InputGroupS>
 
-        <InputGroup className="py-2 mx-auto w-75">
+        <InputGroupS className="py-2 mx-auto">
           <InputGroup.Text>
             <BsLock />
           </InputGroup.Text>
@@ -85,7 +88,7 @@ const SignUp = () => {
             value={password}
             onChange={(e) => setPassword(e.currentTarget.value)}
           />
-        </InputGroup>
+        </InputGroupS>
       </div>
 
       <ButtonGroup className="d-flex justify-content-center my-2">
@@ -105,7 +108,7 @@ const SignUp = () => {
           variant="info"
           className="mx-1 text-white"
           style={{ minWidth: "21%", maxWidth: "24%" }}
-          onClick={() => dispatch(setSignUp({ email, nickname, password }))}
+          onClick={() => dispatch(setSignUp({ email, nickname, password }))} // dispatchされるactionはsetSignUpが呼び起こされた後の返り値となる　setSignUp= action Creater 試図
         >
           Sign Up
         </Button>

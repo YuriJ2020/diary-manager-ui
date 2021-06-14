@@ -28,6 +28,12 @@ const ContainerS = styled(Container)`
   text-align: center;
 `;
 
+const InputGroupS = styled(InputGroup)`
+  @media (min-width: 992px) {
+    width: 60%;
+  }
+`;
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,7 +46,7 @@ const Login = () => {
     <ContainerS fluid className="p-5">
       <Image src={UserSVG} style={{ width: "6rem" }} />
       <p className="py-4">Please enter your Login details.</p>
-      <InputGroup className="mb-3 mx-auto w-75">
+      <InputGroupS className="mb-3 mx-auto">
         <InputGroup.Text>
           <BsEnvelope />
         </InputGroup.Text>
@@ -51,8 +57,8 @@ const Login = () => {
           value={email}
           onChange={(e) => setEmail(e.currentTarget.value)}
         />
-      </InputGroup>
-      <InputGroup className="mb-3 mx-auto w-75">
+      </InputGroupS>
+      <InputGroupS className="mb-3 mx-auto">
         <InputGroup.Text>
           <BsLock />
         </InputGroup.Text>
@@ -63,7 +69,7 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.currentTarget.value)}
         />
-      </InputGroup>
+      </InputGroupS>
       <ButtonGroup className="d-flex justify-content-center mt-4 ">
         <Button
           variant="secondary"

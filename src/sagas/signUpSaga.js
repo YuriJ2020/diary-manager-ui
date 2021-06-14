@@ -67,3 +67,6 @@ export function* handleSignUp({ payload }) {
 export function* signUpSaga() {
   yield takeLatest(sagaActions.signUp, handleSignUp);
 }
+
+// fetch(signupURL, options) === call(fetch, signupURL, options)
+// response.json() === apply(response, response.json)
