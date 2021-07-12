@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Endpoint
+
+https://yurij2020.github.io/diary-manager-ui/
+
 ## Available Scripts
 
 In the project directory, you can run:
