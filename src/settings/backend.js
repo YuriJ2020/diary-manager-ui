@@ -1,8 +1,8 @@
 const backend = {
   endpoints: {
-    signup: "http://localhost:9999/api/signup",
-    login: "http://localhost:9999/api/login",
-    diary: "http://localhost:9999/api/diary",
+    signup: "https://diary-manager-api.herokuapp.com/api/signup",
+    login: "https://diary-manager-api.herokuapp.com/api/login",
+    diary: "https://diary-manager-api.herokuapp.com/api/diary",
   },
 };
 
